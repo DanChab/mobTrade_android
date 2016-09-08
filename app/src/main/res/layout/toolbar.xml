@@ -8,11 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/Red"
-       android:layout_above="@+id/mToolbar"
+       android:layout_above="@+id/mtoolbar"
         android:id="@+id/view" />
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/mToolbar"
+        android:id="@+id/mtoolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/White"
@@ -51,7 +51,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/ic_person"
+                android:id="@+id/ic_profile"
                 android:src="@drawable/ic_person_grey"
                 android:layout_weight="1"
                 />
