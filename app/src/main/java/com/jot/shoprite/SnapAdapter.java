@@ -61,7 +61,7 @@ public class SnapAdapter extends RecyclerView.Adapter<SnapAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = viewType == VERTICAL ? LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.adapter_vertical, parent, false)
+                .inflate(R.layout.adapter_snap_vertical, parent, false)
                 : LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.adapter_snap, parent, false);
 
