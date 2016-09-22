@@ -1,4 +1,4 @@
-package com.jot.shoprite.app;
+package com.jot.shoprite.App;
 
 import android.app.Application;
 import android.text.TextUtils;
@@ -7,7 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
-import com.jot.shoprite.utils.LruBitmapCache;
+import com.jot.shoprite.Utils.LruBitmapCache;
 
 /**
  * Created by D4n on 9/22/2016.

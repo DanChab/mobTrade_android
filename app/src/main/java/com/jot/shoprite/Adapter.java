@@ -51,7 +51,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
             nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            ratingTextView = (TextView) itemView.findViewById(R.id.ratingTextView);
+            ratingTextView = (TextView) itemView.findViewById(R.id.itemPrice);
         }
 
     }

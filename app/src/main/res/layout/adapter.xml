@@ -20,6 +20,7 @@
             android:scaleY="1.2"
             android:src="@drawable/ic_shopping_basket_grey"/>
         <TextView
+            android:text=""
             android:id="@+id/nameTextView"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -29,12 +30,12 @@
             android:maxLines="2"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
         <TextView
-            android:id="@+id/ratingTextView"
+            android:id="@+id/itemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:layout_marginStart="4dp"
-            android:drawableEnd="@drawable/ic_shopping_basket_blue"
+            android:text=""
             android:drawablePadding="2dp"
             android:drawableRight="@drawable/ic_rate"/>
     </LinearLayout>
