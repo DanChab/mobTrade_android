@@ -3,12 +3,12 @@ package com.jot.shoprite;
 /**
  * Created by D4n on 9/4/2016.
  */
-public class App {
+public class Items {
     private int mDrawable;
     private String mName;
     private float mRating;
 
-    public App(String name, int drawable, float rating){
+    public Items(String name, int drawable, float rating){
         mName = name;
         mDrawable = drawable;
         mRating = rating;

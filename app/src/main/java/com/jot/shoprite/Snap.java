@@ -8,9 +8,9 @@ import java.util.List;
 public class Snap {
     private int mGravity;
     private String mText;
-    private List<App> mApps;
+    private List<Items> mApps;
 
-    public Snap(int gravity, String text, List<App> apps){
+    public Snap(int gravity, String text, List<Items> apps){
         mGravity = gravity;
         mText = text;
         mApps = apps;
@@ -24,7 +24,7 @@ public class Snap {
         return mGravity;
     }
 
-    public List<App> getApps(){
+    public List<Items> getApps(){
         return mApps;
     }
 }

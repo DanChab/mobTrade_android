@@ -40,7 +40,7 @@ public class ShoppingBasket extends AppCompatActivity implements Toolbar.OnMenuI
     }
 
     private void setupAdapter() {
-        List<App> apps = getApps();
+        List<Items> apps = getApps();
 
         SnapAdapter snapAdapter = new SnapAdapter();
         if (mHorizontal){
@@ -55,13 +55,13 @@ public class ShoppingBasket extends AppCompatActivity implements Toolbar.OnMenuI
         mRecyclerView.setAdapter(snapAdapter);
     }
 
-    private List<App> getApps() {
-        List<App> apps = new ArrayList<>();
-        apps.add(new App("item",R.drawable.ic_shopping_basket_blue,60));
-        apps.add(new App("item",R.drawable.ic_shopping_basket_blue,60));
-        apps.add(new App("item",R.drawable.ic_shopping_basket_blue,60));
-        apps.add(new App("item",R.drawable.ic_shopping_basket_blue,60));
-        apps.add(new App("item",R.drawable.ic_shopping_basket_blue,60));
+    private List<Items> getApps() {
+        List<Items> apps = new ArrayList<>();
+        apps.add(new Items("item",R.drawable.ic_shopping_basket_blue,60));
+        apps.add(new Items("item",R.drawable.ic_shopping_basket_blue,60));
+        apps.add(new Items("item",R.drawable.ic_shopping_basket_blue,60));
+        apps.add(new Items("item",R.drawable.ic_shopping_basket_blue,60));
+        apps.add(new Items("item",R.drawable.ic_shopping_basket_blue,60));
 
         return apps;
     }

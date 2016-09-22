@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Shopping basket" />
+            app:title="Shopping " />
 
     </android.support.design.widget.AppBarLayout>
 

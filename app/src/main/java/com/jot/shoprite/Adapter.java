@@ -13,11 +13,12 @@ import java.util.List;
  * Created by D4n on 9/4/2016.
  */
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
-    private List<App> mApps;
+    private List<Items> mItems;
     private boolean mHorizontal;
-    public  Adapter(boolean horizontal, List<App> apps){
+    public  Adapter(boolean horizontal, List<Items> items){
         mHorizontal = horizontal;
-        mApps = apps;
+        mItems = items;
+
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -29,15 +30,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(Adapter.ViewHolder holder, int position) {
-        App app = mApps.get(position);
-        holder.imageView.setImageResource(app.getDrawable());
-        holder.nameTextView.setText(app.getName());
-        holder.ratingTextView.setText(String.valueOf(app.getRating()));
+        Items item = mItems.get(position);
+        holder.imageView.setImageResource(item.getDrawable());
+        holder.nameTextView.setText(item.getName());
+        holder.ratingTextView.setText(String.valueOf(item.getRating()));
     }
 
     @Override
     public int getItemCount() {
-        return mApps.size();
+        return mItems.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
