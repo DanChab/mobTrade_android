@@ -1,4 +1,4 @@
-package com.jot.shoprite.Utils;
+package com.jot.JotShop.Utils;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;

@@ -1,4 +1,4 @@
-package com.jot.shoprite;
+package com.jot.JotShop;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;

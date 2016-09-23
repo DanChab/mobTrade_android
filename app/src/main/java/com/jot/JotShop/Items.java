@@ -1,4 +1,4 @@
-package com.jot.shoprite;
+package com.jot.JotShop;
 
 /**
  * Created by D4n on 9/4/2016.

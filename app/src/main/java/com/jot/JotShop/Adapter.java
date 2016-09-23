@@ -1,4 +1,4 @@
-package com.jot.shoprite;
+package com.jot.JotShop;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

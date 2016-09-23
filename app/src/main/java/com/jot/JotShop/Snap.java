@@ -1,4 +1,4 @@
-package com.jot.shoprite;
+package com.jot.JotShop;
 
 import java.util.List;
 

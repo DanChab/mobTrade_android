@@ -1,4 +1,4 @@
-package com.jot.shoprite;
+package com.jot.JotShop;
 
 import android.content.Intent;
 import android.os.Bundle;

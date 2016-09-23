@@ -1,15 +1,20 @@
-package com.jot.shoprite.Network;
+package com.jot.JotShop.Network;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import com.android.volley.Request.Method;
+import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.jot.shoprite.R;
+import com.jot.JotShop.R;
+import com.jot.JotShop.Utils.Const;
+
+import org.json.JSONObject;
 
 /**
  * Created by D4n on 9/22/2016.
@@ -54,7 +59,15 @@ public class JsonRequest extends Activity implements OnClickListener{
      * */
     private void makeJasonObjReq(){
         showProgressDialog();
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,);
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Method.GET,
+                Const.URL_JSONOBJECT,null,
+                new  Response.Listener<JSONObject>(){
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, response.toString());
+                        mItemName.setText(response.toString());
+                    }
+                });
     }
 
     @Override

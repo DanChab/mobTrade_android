@@ -1,4 +1,4 @@
-package com.jot.shoprite;
+package com.jot.JotShop;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
