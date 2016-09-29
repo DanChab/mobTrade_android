@@ -1,19 +1,18 @@
 package com.jot.JotShop;
 
+
 import java.util.List;
 
-/**
- * Created by D4n on 9/4/2016.
- */
 public class Snap {
+
     private int mGravity;
     private String mText;
-    private List<Items> mApps;
+    private List<Product> mProducts;
 
-    public Snap(int gravity, String text, List<Items> apps){
+    public Snap(int gravity, String text, List<Product> products) {
         mGravity = gravity;
         mText = text;
-        mApps = apps;
+        mProducts = products;
     }
 
     public String getText(){
@@ -24,7 +23,7 @@ public class Snap {
         return mGravity;
     }
 
-    public List<Items> getApps(){
-        return mApps;
+    public List<Product> getProducts(){
+        return mProducts;
     }
 }

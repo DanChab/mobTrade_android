@@ -41,7 +41,7 @@ public class MainActivityActivity extends AppCompatActivity implements View.OnCl
 
         switch (view.getId()){
             case R.id.ic_shoppingBasket:
-                Intent intent = new Intent(MainActivityActivity.this,ShoppingBasket.class);
+                Intent intent = new Intent(MainActivityActivity.this,AdapterShoppingBasket.class);
                 startActivity(intent);
         }
 
