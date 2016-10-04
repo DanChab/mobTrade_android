@@ -1,4 +1,4 @@
-package com.jot.JotShop.App;
+package com.jot.JotShop.app;
 
 import android.app.Application;
 import android.text.TextUtils;

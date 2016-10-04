@@ -1,4 +1,4 @@
-package com.jot.JotShop;
+package com.jot.JotShop.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.jot.JotShop.R;
 
 public class MainActivityActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -41,7 +43,7 @@ public class MainActivityActivity extends AppCompatActivity implements View.OnCl
 
         switch (view.getId()){
             case R.id.ic_shoppingBasket:
-                Intent intent = new Intent(MainActivityActivity.this,AdapterShoppingBasket.class);
+                Intent intent = new Intent(MainActivityActivity.this,ShopSectionActivity.class);
                 startActivity(intent);
         }
 
