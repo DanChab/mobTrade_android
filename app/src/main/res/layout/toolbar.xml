@@ -7,12 +7,12 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/Red"
-       android:layout_above="@+id/mtoolbar"
+        android:background="@color/DarkGray"
+        android:layout_above="@+id/mToolbar"
         android:id="@+id/view" />
 
     <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/mtoolbar"
+        android:id="@+id/mToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/White"

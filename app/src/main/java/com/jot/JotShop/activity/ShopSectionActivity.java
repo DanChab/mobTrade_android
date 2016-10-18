@@ -1,5 +1,6 @@
 package com.jot.JotShop.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -47,6 +48,10 @@ public class ShopSectionActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Section section = sectionList.get(position);
                 Toast.makeText(getApplicationContext(), section.getName() + " is selected!", Toast.LENGTH_SHORT).show();
+                if(position==1){
+                    Intent intent = new Intent(ShopSectionActivity.this,SectionOneActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
