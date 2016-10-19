@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        mToolbar = (Toolbar) findViewById(R.id.mainToolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
         mShoppingBasket = (ImageView) findViewById(R.id.ic_shoppingBasket);
@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()){
             case R.id.ic_shoppingBasket:
                 Intent intent = new Intent(MainActivity.this,ShopSectionActivity.class);
                 startActivity(intent);
+
         }
 
     }
