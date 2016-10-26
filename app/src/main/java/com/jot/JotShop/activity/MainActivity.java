@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.main_activity);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (mToolbar != null)
         setSupportActionBar(mToolbar);
 
         mShoppingBasket = (ImageView) findViewById(R.id.ic_shoppingBasket);

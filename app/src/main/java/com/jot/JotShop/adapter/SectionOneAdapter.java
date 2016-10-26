@@ -22,20 +22,20 @@ import java.util.List;
 
 public class SectionOneAdapter extends RecyclerView.Adapter<SectionOneAdapter.MyViewHolder> {
 
-    private List<Image> images;
+    private List<Image> imageList;
     private Context mContext;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        public ImageView thumbnail;
-        public MyViewHolder(View View) {
+        private ImageView thumbnail;
+        private MyViewHolder(View View) {
             super(View);
             thumbnail = (ImageView) View.findViewById(R.id.thumbnail);
         }
     }
 
-    public SectionOneAdapter(Context context, List<Image> images){
+    public SectionOneAdapter(Context context, List<Image> imageList){
         mContext = context;
-        this.images = images;
+        this.imageList = imageList;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,7 +47,7 @@ public class SectionOneAdapter extends RecyclerView.Adapter<SectionOneAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Image image = images.get(position);
+        Image image = imageList.get(position);
 
         Glide.with(mContext).load(image.getMedium())
                 .thumbnail(0.5f)
@@ -57,7 +57,7 @@ public class SectionOneAdapter extends RecyclerView.Adapter<SectionOneAdapter.My
 
     @Override
     public int getItemCount() {
-        return images.size();
+        return imageList.size();
     }
     //Handle the clicks
     public interface ClickListener{

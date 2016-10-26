@@ -75,6 +75,10 @@ public class MainActivityFireBase extends AppCompatActivity {
 
         // register new push message receiver
         // by doing this, the activity will be notified each time a new message arrives
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(Config.PUSH_NOTIFICATION));
+
+        // clear the notification area when the app is opened
         NotificationUtils.clearNotifications(getApplicationContext());
     }
     @Override

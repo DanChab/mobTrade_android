@@ -1,6 +1,8 @@
 package com.jot.JotShop.activity;
 
 import android.app.ProgressDialog;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -8,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -38,14 +41,24 @@ public class SectionOneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.section_one_activity);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.sec_one_toolbar);
+        //Handling toolbar activities
+        Toolbar toolbar = (Toolbar) findViewById(R.id.section_one_toolbar);
         setSupportActionBar(toolbar);
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+            upArrow.setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_ATOP);
+            getSupportActionBar().setHomeAsUpIndicator(upArrow);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         pDialog = new ProgressDialog(this);
         images = new ArrayList<>();
         mAdapter = new SectionOneAdapter(getApplicationContext(), images);
+
 
         RecyclerView.LayoutManager mLayoutManager =new GridLayoutManager(getApplication(),2);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -72,6 +85,16 @@ public class SectionOneActivity extends AppCompatActivity {
         }));
 */
         fetchImages();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void  fetchImages(){
@@ -118,4 +141,5 @@ public class SectionOneActivity extends AppCompatActivity {
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req,TAG);
     }
+
 }
