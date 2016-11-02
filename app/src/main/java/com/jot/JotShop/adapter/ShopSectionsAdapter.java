@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by D4n on 10/1/2016.
  */
-public class SectionsAdapter extends RecyclerView.Adapter<SectionsAdapter.MyViewHolder> {
+public class ShopSectionsAdapter extends RecyclerView.Adapter<ShopSectionsAdapter.MyViewHolder> {
 
     private List<Section> sectionsList;
 
@@ -30,8 +30,8 @@ public class SectionsAdapter extends RecyclerView.Adapter<SectionsAdapter.MyView
     }
 
 
-    public SectionsAdapter(List<Section> moviesList) {
-        this.sectionsList = moviesList;
+    public ShopSectionsAdapter(List<Section> sectionsList) {
+        this.sectionsList = sectionsList;
     }
 
     @Override

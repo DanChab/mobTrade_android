@@ -14,7 +14,7 @@ import com.jot.JotShop.DividerItemDecoration;
 import com.jot.JotShop.R;
 import com.jot.JotShop.RecyclerTouchListener;
 import com.jot.JotShop.Section;
-import com.jot.JotShop.adapter.SectionsAdapter;
+import com.jot.JotShop.adapter.ShopSectionsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,8 @@ import java.util.List;
 public class ShopSectionActivity extends AppCompatActivity {
 
     private List<Section> sectionList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private SectionsAdapter mAdapter;
+    public RecyclerView recyclerView;
+    private ShopSectionsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ShopSectionActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        mAdapter = new SectionsAdapter(sectionList);
+        mAdapter = new ShopSectionsAdapter(sectionList);
 
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -48,7 +48,8 @@ public class ShopSectionActivity extends AppCompatActivity {
             public void onClick(View view, int position) {
                 Section section = sectionList.get(position);
                 Toast.makeText(getApplicationContext(), section.getName() + " is selected!", Toast.LENGTH_SHORT).show();
-                if(position==1){
+                //Todo Add all sections on each position
+                if(position==0){
                     Intent intent = new Intent(ShopSectionActivity.this,SectionOneActivity.class);
                     startActivity(intent);
                 }
@@ -62,7 +63,7 @@ public class ShopSectionActivity extends AppCompatActivity {
 
         prepareSectionData();
     }
-
+    //Todo Add DB to store all sections and descriptions then query them to display
     private void prepareSectionData() {
         Section section = new Section("Section1","Coffee,Biscuit,Tea,sugar");
         sectionList.add(section);
