@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,20 +20,28 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.jot.JotShop.App.AppController;
 import com.jot.JotShop.R;
 import com.jot.JotShop.adapter.SectionOneAdapter;
-import com.jot.JotShop.model.Image;
+import com.jot.JotShop.helper.SlideshowDialogFragment;
+import com.jot.JotShop.model.Product;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+> Download the json by making volley http request. fetchProduct() method is used for this purpose
+> Parse the json and add the models to array list.
+> Pass the array list to recyclerView’s adapter class.
+*/
 
-public class SectionOneActivity extends AppCompatActivity {
-    private String TAG = SectionOneActivity.class.getSimpleName();
+
+public class SectionProductActivity extends AppCompatActivity {
+    private String TAG = SectionProductActivity.class.getSimpleName();
     private static final String endpoint = "http://api.androidhive.info/json/glide.json";
-    private List<Image> images;
+    private List<Product> products;
     private ProgressDialog pDialog;
     private SectionOneAdapter mAdapter;
     private RecyclerView recyclerView;
@@ -44,6 +54,7 @@ public class SectionOneActivity extends AppCompatActivity {
         //Handling toolbar activities
         Toolbar toolbar = (Toolbar) findViewById(R.id.section_one_toolbar);
         setSupportActionBar(toolbar);
+
         // add back arrow to toolbar
         if (getSupportActionBar() != null){
             final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
@@ -54,10 +65,9 @@ public class SectionOneActivity extends AppCompatActivity {
         }
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
         pDialog = new ProgressDialog(this);
-        images = new ArrayList<>();
-        mAdapter = new SectionOneAdapter(getApplicationContext(), images);
+        products = new ArrayList<>();
+        mAdapter = new SectionOneAdapter(getApplicationContext(), products);
 
 
         RecyclerView.LayoutManager mLayoutManager =new GridLayoutManager(getApplication(),2);
@@ -65,11 +75,13 @@ public class SectionOneActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-      /*  recyclerView.addOnItemTouchListener(new SectionOneAdapter.RecyclerTouchListener(getApplicationContext(), recyclerView, new SectionOneAdapter.ClickListener() {
+
+        recyclerView.addOnItemTouchListener(new SectionOneAdapter.RecyclerTouchListener(getApplicationContext(), recyclerView,         new SectionOneAdapter.ClickListener() {
+
             @Override
             public void onClick(View view, int position) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("images", (Serializable) images);
+                bundle.putSerializable("products", (Serializable) products);
                 bundle.putInt("position", position);
 
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -80,11 +92,12 @@ public class SectionOneActivity extends AppCompatActivity {
 
             @Override
             public void onLongClick(View view, int position) {
-
+            //Todo Here the long click help select on add to list
             }
         }));
-*/
-        fetchImages();
+
+
+        fetchProduct();
     }
 
     @Override
@@ -97,7 +110,7 @@ public class SectionOneActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void  fetchImages(){
+    private void fetchProduct(){
         pDialog.setMessage("Please Wait...");
         pDialog.show();
 
@@ -108,21 +121,22 @@ public class SectionOneActivity extends AppCompatActivity {
                         Log.d(TAG, response.toString());
                         pDialog.hide();
 
-                        images.clear();
+                        products.clear();
                         for (int i = 0 ;  i < response.length(); i++){
                             try {
                                 JSONObject object = response.getJSONObject(i);
-                                Image image = new Image();
-                                image.setName(object.getString("name"));
+                                Product product = new Product();
+                                product.setName(object.getString("name"));
 
                                 JSONObject url =  object.getJSONObject("url");
-                                image.setSmall(url.getString("small"));
-                                image.setMedium(url.getString("medium"));
-                                image.setLarge(url.getString("large"));
+                                product.setSmall(url.getString("small"));
+                                product.setMedium(url.getString("medium"));
+                                product.setLarge(url.getString("large"));
+                                product.setTimestamp(object.getString("timestamp"));
                                 //Todo: put the price field in the DB
-                                //image.setPrice(url.getString("price"));
+                                //product.setPrice(url.getString("price"));
 
-                                images.add(image);
+                                products.add(product);
 
                             } catch (JSONException e) {
                                 Log.e(TAG,"Json parsing error: " + e.getMessage());
@@ -138,8 +152,11 @@ public class SectionOneActivity extends AppCompatActivity {
             }
         });
 
+
+
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(req,TAG);
     }
+
 
 }

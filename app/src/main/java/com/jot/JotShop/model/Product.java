@@ -5,18 +5,19 @@ import java.io.Serializable;
 /**
  * Created by D4n on 10/4/2016.
  */
-public class Image implements Serializable{
-    private  String name;
+public class Product implements Serializable{
+    private String name;
     private String small, medium, large;
     private String price;
     private String description;
+    private String timestamp;
 
-    public Image() {
+    public Product() {
     }
 
 
 
-    public Image(String name, String small, String medium, String large, String price, String description ){
+    public Product(String name, String small, String medium, String large, String price, String description ){
         this.name = name;
         this.description = description;
         this.small = small;
@@ -73,4 +74,14 @@ public class Image implements Serializable{
     public void setPrice(String price) {
         this.price = price;
     }
+
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String setTimestamp) {
+        this.timestamp = setTimestamp;
+    }
 }
+

@@ -8,11 +8,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jot.JotShop.R;
-import com.jot.JotShop.model.Image;
+import com.jot.JotShop.model.Product;
 
 import java.util.List;
 
@@ -22,20 +23,24 @@ import java.util.List;
 
 public class SectionOneAdapter extends RecyclerView.Adapter<SectionOneAdapter.MyViewHolder> {
 
-    private List<Image> imageList;
+    private List<Product> productList;
     private Context mContext;
+    private TextView mPrice;
+    private TextView mProductName;
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private ImageView thumbnail;
         private MyViewHolder(View View) {
             super(View);
             thumbnail = (ImageView) View.findViewById(R.id.thumbnail);
+            mPrice = (TextView) View.findViewById(R.id.tv_price);
+            mProductName = (TextView) View.findViewById(R.id.tv_productName);
         }
     }
 
-    public SectionOneAdapter(Context context, List<Image> imageList){
+    public SectionOneAdapter(Context context, List<Product> productList){
         mContext = context;
-        this.imageList = imageList;
+        this.productList = productList;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,9 +52,14 @@ public class SectionOneAdapter extends RecyclerView.Adapter<SectionOneAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Image image = imageList.get(position);
+        Product product = productList.get(position);
+        String timestamp = product.getTimestamp();
+        String productName = product.getName();
+        mPrice.setText(timestamp);
+        mProductName.setText(productName);
 
-        Glide.with(mContext).load(image.getMedium())
+
+        Glide.with(mContext).load(product.getMedium())
                 .thumbnail(0.5f)
                 .crossFade().diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.thumbnail);
@@ -57,12 +67,13 @@ public class SectionOneAdapter extends RecyclerView.Adapter<SectionOneAdapter.My
 
     @Override
     public int getItemCount() {
-        return imageList.size();
+        return productList.size();
     }
     //Handle the clicks
     public interface ClickListener{
         void onClick(View view, int position);
         void  onLongClick(View view, int position);
+        //Todo add to list here
     }
 
     public static class RecyclerTouchListener  implements RecyclerView.OnItemTouchListener{

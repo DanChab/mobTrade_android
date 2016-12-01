@@ -50,7 +50,7 @@ public class ShopSectionActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), section.getName() + " is selected!", Toast.LENGTH_SHORT).show();
                 //Todo Add all sections on each position
                 if(position==0){
-                    Intent intent = new Intent(ShopSectionActivity.this,SectionOneActivity.class);
+                    Intent intent = new Intent(ShopSectionActivity.this,SectionProductActivity.class);
                     startActivity(intent);
                 }
             }

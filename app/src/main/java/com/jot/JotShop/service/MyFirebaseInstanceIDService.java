@@ -24,7 +24,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         // Saving reg id to shared preferences
         storeRegIdInPref(refreshedToken);
 
-        // sending reg id to your server
+        // sending reg id to my server
         sendRegistrationToServer(refreshedToken);
 
         // Notify UI that registration has completed, so the progress indicator can be hidden.

@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jot.JotShop.R;
-import com.jot.JotShop.model.Image;
+import com.jot.JotShop.model.Product;
 
 import java.util.ArrayList;
 
@@ -26,10 +26,10 @@ import java.util.ArrayList;
 public class SlideshowDialogFragment extends android.support.v4.app.DialogFragment {
 
     private String TAG = SlideshowDialogFragment.class.getSimpleName();
-    private ArrayList<Image> images;
+    private ArrayList<Product> products;
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
-    private TextView lblName, lblDescription, lblprice;
+    private TextView lblName,lblCount,lblDate;
     private int selectedPosition = 0;
 
     public static SlideshowDialogFragment newInstance() {
@@ -43,14 +43,16 @@ public class SlideshowDialogFragment extends android.support.v4.app.DialogFragme
         View v = inflater.inflate(R.layout.fragment_image_slider,container,false);
         viewPager = (ViewPager) v.findViewById(R.id.viewpager);
         lblName = (TextView) v.findViewById(R.id.ItemName);
-        lblDescription = (TextView) v.findViewById(R.id.ItemDescribe);
-        lblprice = (TextView) v.findViewById(R.id.ItemPrice);
 
-        images = (ArrayList<Image>) getArguments().getSerializable("images");
+        lblCount = (TextView) v.findViewById(R.id.lbl_count);
+
+        lblDate = (TextView) v.findViewById(R.id.date);
+
+        products = (ArrayList<Product>) getArguments().getSerializable("products");
         selectedPosition = getArguments().getInt("position");
 
         Log.e(TAG,"position: "+ selectedPosition);
-        Log.e(TAG,"images size: "+images.size());
+        Log.e(TAG,"products size: "+ products.size());
 
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
@@ -85,12 +87,12 @@ public class SlideshowDialogFragment extends android.support.v4.app.DialogFragme
     };
 //Todo comment out the price and implement from the server side and mode info and features
     private void displayMetaInfo(int position){
-       // lblCount.setText((position + 1) + " of " + images.size());
+        lblCount.setText((position + 1) + " of " + products.size());
 
-        Image image = images.get(position);
-        lblName.setText(image.getName());
-        lblDescription.setText(image.getDescription());
-       // lblprice.setText(image.getPrice());
+        Product product = products.get(position);
+        lblName.setText(product.getName());
+        lblDate.setText(product.getTimestamp());
+       // lblprice.setText(product.getPrice());
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,9 +117,9 @@ public class SlideshowDialogFragment extends android.support.v4.app.DialogFragme
 
             ImageView imageViewPreview = (ImageView) view.findViewById(R.id.image_preview);
 
-            Image image = images.get(position);
+            Product product = products.get(position);
 
-            Glide.with(getActivity()).load(image.getLarge())
+            Glide.with(getActivity()).load(product.getLarge())
                     .thumbnail(0.5f)
                     .crossFade()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -130,7 +132,7 @@ public class SlideshowDialogFragment extends android.support.v4.app.DialogFragme
 
         @Override
         public int getCount() {
-            return images.size();
+            return products.size();
         }
 
         @Override
