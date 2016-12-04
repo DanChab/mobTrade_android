@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.jot.JotShop.App.Config;
 import com.jot.JotShop.R;
 import com.jot.JotShop.Utils.NotificationUtils;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //Firebase instantiation
-        //txtRegId = (TextView) findViewById(R.id.txt_reg_id);//Uncomment for debugging to display the Firebase token from GCM
+       // txtRegId = (TextView) findViewById(R.id.txt_reg_id);//Uncomment for debugging to display the Firebase token from GCM
         txtMessage = (TextView) findViewById(R.id.txt_push_message);
 
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (intent.getAction().equals(Config.REGISTRATION_COMPLETE)){
                     // gcm successfully registered
                     // now subscribe to `global` topic to receive app wide notifications
-                   // displayFirebaseRegId();
+                    FirebaseMessaging.getInstance().subscribeToTopic(Config.TOPIC_GLOBAL);
+                   //displayFirebaseRegId();
                 }else if (intent.getAction().equals(Config.PUSH_NOTIFICATION)){
                     //new push notification is received
                     String message = intent.getStringExtra("message");
@@ -77,11 +79,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         };
-        //displayFirebaseRegId();//Uncomment for debugging to display the Firebase token
+       // displayFirebaseRegId();//Uncomment for debugging to display the Firebase token
     }
-    /*
+
     // Fetches reg id from shared preferences
     // and displays on the screen
+    /*
     private void displayFirebaseRegId() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences(Config.SHARED_PREF, 0);
         String reId = pref.getString("regId", null);
@@ -90,10 +93,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (!TextUtils.isEmpty(reId))
             txtRegId.setText("Firebase Reg Id: " + reId);
-        else
-            txtRegId.setText("Firebase Reg Id is not received yet!");
+         //else
+           // txtRegId.setText("Firebase Reg Id is not received yet!");
+
     }
     */
+
     @Override
     protected void onResume(){
         super.onResume();

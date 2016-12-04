@@ -6,7 +6,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.jot.JotShop.App.Config;
 import com.jot.JotShop.Utils.NotificationUtils;
@@ -19,9 +18,9 @@ import org.json.JSONObject;
  * Created by D4n on 10/14/2016.
  */
 
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
+public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
-    private static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
+    private static final String TAG = FirebaseMessagingService.class.getSimpleName();
 
     private NotificationUtils notificationUtils;
 

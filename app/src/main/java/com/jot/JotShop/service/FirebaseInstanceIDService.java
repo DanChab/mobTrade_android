@@ -8,13 +8,21 @@ import android.util.Log;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.jot.JotShop.App.Config;
+import com.jot.JotShop.Utils.Const;
+
+import java.io.IOException;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * Created by D4n on 10/14/2016.
  */
 
-public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
-    private static final String TAG = MyFirebaseInstanceIDService.class.getSimpleName();
+public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
+    private static final String TAG = FirebaseInstanceIDService.class.getSimpleName();
 
     @Override
     public void onTokenRefresh() {
@@ -34,7 +42,22 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
 
     private void sendRegistrationToServer(final String token) {
-        // sending gcm token to server
+        // sending gcm token to server here am using Okhttp
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = new FormBody.Builder()
+                .add("Token", token)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(Const.URL_TOKEN_REGISTER)
+                .post(body)
+                .build();
+        try {
+            client.newCall(request).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Log.e(TAG, "sendRegistrationToServer: " + token);
     }
 

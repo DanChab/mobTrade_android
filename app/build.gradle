@@ -38,6 +38,13 @@ dependencies {
     testCompile 'com.ibm.icu:icu4j:53.1'
     //Facebook login
     compile 'com.facebook.android:facebook-android-sdk:4.16.0'
+
+    // retrofit, gson
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    //Okhttp
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
