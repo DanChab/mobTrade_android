@@ -7,7 +7,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/DarkGray"
+        android:background="@color/DeepSkyBlue"
         android:layout_above="@+id/mToolbar"
         android:id="@+id/view" />
 
