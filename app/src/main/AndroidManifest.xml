@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jotifica.jotifica">
+    package="com.Jot.Jot">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.jotifica.jotifica.App.AppController"
+        android:name="com.Jot.Jot.App.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/MyMaterialTheme">
-        <activity android:name=".activity.AdvertiserslistMain" />
+        <activity android:name="com.Jot.Jot.activity.AdvertiserslistMain" />
+        <activity android:name="com.Jot.Jot.activity.ClientProfileMain"/>
 
         <activity
-            android:name="com.jotifica.jotifica.activity.MainActivity"
+            android:name="com.Jot.Jot.activity.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +24,12 @@
             </intent-filter>
         </activity>
         <!-- Firebase Notifications -->
-        <service android:name="com.jotifica.jotifica.service.FirebaseMessagingService">
+        <service android:name="com.Jot.Jot.service.FirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name="com.jotifica.jotifica.service.FirebaseInstanceIDService">
+        <service android:name="com.Jot.Jot.service.FirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
